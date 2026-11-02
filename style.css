@@ -1,35 +1,376 @@
+/* STYLE GÉNÉRAL */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #F7F3EA;
     color: #1D3027;
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
+    margin: 0;
 }
 
-img {
-    display: block;
-    margin: 0 auto;
-}
+/* CONTENEUR PRINCIPAL */
 
 .container {
     width: 500px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
-@media (max-width: 960px) {
-  .container {
-    width: 700px;
-  }
+/* CARTES */
+
+.card {
+    background-color: white;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
 }
+
+/* CARTE À PROPOS DE MOI */
+
+.about {
+    color: #4A3025;
+}
+
+/* PREMIÈRE CARTE : PRÉSENTATION */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: left;
+    background-color: #343A1A;
+    color: #FFFFFF;
+}
+}
+
+.hero-text {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin: 0 0 15px;
+}
+
+.hero-text p {
+    font-size: 13px;
+    margin: 0;
+}
+
+/* PHOTO DE PROFIL */
+
+.hero-photo {
+    display: block;
+    width: 130px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* CARTE YOUTUBE */
+
+.youtube-card {
+    background-color: #4A3025;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CONTENU YOUTUBE */
+
+.youtube-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+/* LOGO YOUTUBE */
+
+.youtube-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.youtube-content a:hover .youtube-logo {
+    transform: scale(1.12) rotate(-5deg);
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.3));
+}
+
+.youtube-content a:active .youtube-logo {
+    transform: scale(0.95);
+}
+
+/* RESPONSIVE : TABLETTE */
 
 @media (max-width: 720px) {
-  .container {
-    width: 500px;
-  }
+    .container {
+        width: 450px;
+        max-width: 90%;
+    }
 }
 
+/* RESPONSIVE : TÉLÉPHONE */
+
 @media (max-width: 540px) {
-  .container {
-    width: 300px;
-  }
+    .container {
+        width: 90%;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+    .hero-photo {
+        width: 130px;
+        height: auto;
+    }
+}
+
+
+/* DOSSIER SOUVENIRS */
+
+.photo-gallery {
+    text-align: center;
+    margin: 15px auto 10px;
+    padding: 25px 0;
+}
+
+.photo-folder {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.folder-icon {
+    width: 130px;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.photo-folder:hover .folder-icon {
+    transform: scale(1.08) rotate(-5deg);
+}
+
+/* PHOTOS CACHEES */
+
+.floating-photos img {
+    position: absolute;
+    width: 100px;
+    height: 125px;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    top: 0;
+    left: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s ease, opacity 0.4s ease;
+}
+
+/* TEXTE SOUS LE DOSSIER */
+
+.folder-caption {
+    margin-top: 20px;
+    font-size: 14px;
+    font-style: italic;
+    color: #777;
+}
+
+/* ADAPTATION MOBILE */
+
+@media (max-width: 600px) {
+    .photo-folder {
+        transform: scale(0.65);
+    }
+
+    .photo-gallery {
+        margin: 20px auto;
+        padding: 100px 0 40px;
+    }
+}
+
+/* RAPPROCHER LE TEXTE ET LE DOSSIER */
+
+.about > p {
+    margin-bottom: 0;
+}
+
+.photo-gallery {
+    margin: 0 auto;
+    padding: 10px 0 0;
+}
+
+.folder-caption {
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* RAPPROCHER LA CARTE YOUTUBE */
+
+.about {
+    margin-bottom: 10px;
+}
+
+
+/* CASCADE DE PHOTOS VERS LE HAUT */
+
+.photo-gallery {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px 0 5px;
+    overflow: visible;
+}
+
+.photo-folder {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    isolation: isolate;
+}
+
+.folder-icon {
+    position: relative;
+    width: 110px;
+    z-index: 20;
+    transition: transform 0.3s ease;
+}
+
+.photo-folder:hover .folder-icon {
+    transform: scale(1.08) rotate(-5deg);
+}
+
+/* STYLE POLAROID */
+
+.floating-photos img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 75px;
+    height: 95px;
+    box-sizing: border-box;
+    object-fit: cover;
+    border: 4px solid white;
+    border-bottom-width: 12px;
+    border-radius: 3px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+
+    transform: translate(-50%, 0) scale(0.2);
+
+    transition:
+        transform 0.65s ease,
+        opacity 0.4s ease;
+}
+
+/* TAILLES DIFFERENTES */
+
+.floating-photos .photo-2,
+.floating-photos .photo-5,
+.floating-photos .photo-8 {
+    width: 95px;
+    height: 120px;
+}
+
+.floating-photos .photo-4,
+.floating-photos .photo-7 {
+    width: 60px;
+    height: 80px;
+}
+
+
+/* PHOTOS PLUS PROCHES DU DOSSIER */
+
+.photo-folder:hover .photo-1 {
+    opacity: 1;
+    transform: translate(-145px, -65px) rotate(-22deg);
+    transition-delay: 0.02s;
+}
+
+.photo-folder:hover .photo-2 {
+    opacity: 1;
+    transform: translate(-105px, -115px) rotate(-12deg);
+    transition-delay: 0.06s;
+}
+
+.photo-folder:hover .photo-3 {
+    opacity: 1;
+    transform: translate(-65px, -75px) rotate(10deg);
+    transition-delay: 0.1s;
+}
+
+.photo-folder:hover .photo-4 {
+    opacity: 1;
+    transform: translate(-25px, -145px) rotate(-15deg);
+    transition-delay: 0.14s;
+}
+
+.photo-folder:hover .photo-5 {
+    opacity: 1;
+    transform: translate(-15px, -95px) rotate(8deg);
+    transition-delay: 0.18s;
+}
+
+.photo-folder:hover .photo-6 {
+    opacity: 1;
+    transform: translate(35px, -135px) rotate(20deg);
+    transition-delay: 0.22s;
+}
+
+.photo-folder:hover .photo-7 {
+    opacity: 1;
+    transform: translate(85px, -75px) rotate(-10deg);
+    transition-delay: 0.26s;
+}
+
+.photo-folder:hover .photo-8 {
+    opacity: 1;
+    transform: translate(65px, -115px) rotate(14deg);
+    transition-delay: 0.3s;
+}
+
+.photo-folder:hover .photo-9 {
+    opacity: 1;
+    transform: translate(-165px, -105px) rotate(16deg);
+    transition-delay: 0.34s;
+}
+
+.photo-folder:hover .photo-10 {
+    opacity: 1;
+    transform: translate(115px, -55px) rotate(25deg);
+    transition-delay: 0.38s;
 }
